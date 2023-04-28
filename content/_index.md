@@ -44,6 +44,7 @@ sections:
     subtitle: 教育经历
   design:
     columns: "1"
+
 - block: collection
   content:
     filters:
@@ -59,6 +60,7 @@ sections:
 
 - block: collection
   content:
+    count: 3
     filters:
       exclude_featured: true
       folders:
@@ -70,8 +72,8 @@ sections:
     title: Recent Publications
     subtitle: 近期发表论文
   design:
-    columns: "2"
-    view: citation
+    columns: "1"
+    view: list
     
 - block: collection
   content:
@@ -93,7 +95,7 @@ sections:
     title: Recent Posts
     subtitle: 最近更新
   design:
-    columns: "1"
+    columns: "2"
     view: compact
   id: posts
 
