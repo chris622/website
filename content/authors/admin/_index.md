@@ -21,36 +21,31 @@ interests:
 - Information Retrieval
 last_name: Wu
 organizations:
-- name: Stanford University
-  url: https://www.stanford.edu/
-role: Professor of Artificial Intelligence
+- name: UCAS 中国科学院大学
+  url: https://www.ucas.ac.cn/
+role: PhD student 博士在读| Environmental Engineering 环境工程
 social:
 - icon: envelope
   icon_pack: fas
   link: /#contact
-- display:
-    header: true
-  icon: twitter
-  icon_pack: fab
-  label: Follow me on Twitter
-  link: https://twitter.com/GeorgeCushen
 - icon: graduation-cap
   icon_pack: fas
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: http://www.rcees.ac.cn/
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/chris622
 - icon: linkedin
   icon_pack: fab
-  link: https://www.linkedin.com/
+  link: https://www.linkedin.cn/incareer/in/ACoAAEJbnVgBkdLv8OEG2b1peCNOk7aQgAu7oSU
 - icon: cv
   icon_pack: ai
   link: uploads/resume.pdf
 status:
-  icon: ☕️
+  icon: 
 superuser: true
-title: Alice Wu 吳恩達
+title: Liu Mengjie 刘梦洁
 ---
+R | SQL | Tableau | Excel | Presentation | Python | C++
 
-Alice Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+英语六级 | 计算机二级 | 计算机三级 | 计算机四级 
 {style="text-align: justify;"}
