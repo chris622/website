@@ -10,7 +10,7 @@ featured: false
 image:
   caption: 'Image credit: [**Environmental Science & Technology**](https://pubs.acs.org/journal/esthag)'
   focal_point: ""
-  preview_only: false
+  preview_only: true
 projects: [123]
 publication: '**Environmental Science & Technology**, 57(11),4543-4555.'
 publication_short: ""
