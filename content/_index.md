@@ -104,8 +104,10 @@ sections:
     buttons:
     - name: All
       tag: '*'
-    - name: Deep Learning
-      tag: Deep Learning
+    - name: R
+      tag: R
+    - name: Model
+      tag: Model
     - name: Other
       tag: Demo
     default_button_index: 0
