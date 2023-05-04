@@ -1,29 +1,33 @@
 ---
 date: "2023-05-03"
-external_link: ""
 image:
-  caption: The Titanic
-  focal_point: Smart
+  caption: "The Titanic"
+  focal_point: 'center'
 links:
-- icon: twitter
-  icon_pack: fab
+- icon: database
+  icon_pack: fas
+  name: Rawdata
+  url: https://www.kaggle.com/competitions/titanic
+- icon: chart-line
+  icon_pack: fas
+  name: Dashboard
+  url: https://liumj1998.shinyapps.io/Titanic_dashboard/?_ga=2.209434129.2071371260.1683203458-2025947915.1680703749
+- icon: book
+  icon_pack: fas
   name: Tutorial
-  url: https://twitter.com/georgecushen
-slides: example
+  url: https://rpubs.com/Chris622/kaggle-titanic-survival
+
 summary: Predict the survival on Titanic based on the passenger information
 tags:
 - Model
 - Kaggle dataset
 - R
 title: Predict Titanic Survival
-url_code: ""
-url_pdf: ""
-url_slides: ""
-url_video: ""
 ---
 
-
-本内容为Titanic生存模型的建立，原始数据详见[Kaggle](https://www.kaggle.com/competitions/titanic)
+-   本内容为Titanic生存模型的建立，原始数据详见[Rawdata](https://www.kaggle.com/competitions/titanic)
+-   可视化参见[Dashboard](https://liumj1998.shinyapps.io/Titanic_dashboard/?_ga=2.209434129.2071371260.1683203458-2025947915.1680703749)
+-   详细的图文教程[Tutorial](https://rpubs.com/Chris622/kaggle-titanic-survival)
 
 # Read data
 
@@ -54,8 +58,10 @@ url_video: ""
 
 <!-- -->
 
-    colSums(is.na(full))#Age has 263 NA，Fare has 1 NA
-    colSums(full=="")#Embarked has 2 empty values，Cabin has 1014 empty values
+    colSums(is.na(full))
+    #Age has 263 NA，Fare has 1 NA
+    colSums(full=="")
+    #Embarked has 2 empty values，Cabin has 1014 empty values
 
 -   检查可以转换为factor的变量（查看数据唯一值的数目，数目少的说明为factor因子变量)
     -   `unique()` 提取唯一值
@@ -185,7 +191,8 @@ url_video: ""
 
 <!-- -->
 
-    full$Title <- fct_recode(full$Title,Miss="Mlle",Miss='Ms',Mrs='Mme')%>%fct_lump_min(min=8)
+    full$Title <- fct_recode(full$Title,Miss="Mlle",Miss='Ms',Mrs='Mme')%>%
+      fct_lump_min(min=8)
     table(full$Title,full$Sex)
 
 -   `ggplot()+geom_bar()`绘图
@@ -208,14 +215,16 @@ url_video: ""
 
 <!-- -->
 
-    full%>%filter(is.na(Fare))#可以看出这是Embarked=S，Pclass=3的乘客
+    full%>%filter(is.na(Fare))
+    #可以看出这是Embarked=S，Pclass=3的乘客
 
 -   `filter()`查找相同条件的乘客
 
 <!-- -->
 
     same_df <- full%>%filter(Pclass==3&Embarked=="S")
-    ggplot(same_df)+geom_density(aes(x=Fare))#查看相同乘客的票价分布
+    ggplot(same_df)+geom_density(aes(x=Fare))
+    #查看相同乘客的票价分布
 
 -   用相同乘客的票价中值代替
 
@@ -230,21 +239,25 @@ url_video: ""
 
 <!-- -->
 
-    full%>%filter(Embarked=="")#可以看出这两位都是Fare=80，Cabin=B28，Pclass=1的乘客
+    full%>%filter(Embarked=="")
+    #可以看出这两位都是Fare=80，Cabin=B28，Pclass=1的乘客
 
 -   `filter()`查找相同条件的乘客
 
 <!-- -->
 
-    full%>%filter(Pclass==1&Fare==80)%>%select(Embarked)#根据相同条件查找可以发现，为C上船的乘客
-    full$Embarked[full$Embarked==""] <- "C"#为两个空的Embarked赋值C
+    full%>%filter(Pclass==1&Fare==80)%>%select(Embarked)
+    #根据相同条件查找可以发现，为C上船的乘客
+    full$Embarked[full$Embarked==""] <- "C"
+    #为两个空的Embarked赋值C
     sum(full$Embarked=="")
 
 ## Age
 
 ### 方法1：用平均值代替
 
-    full <- full%>%mutate(Age1=Age)%>%replace_na(list(Age1=mean(full$Age,na.rm = T)))
+    full <- full%>%mutate(Age1=Age)%>%
+      replace_na(list(Age1=mean(full$Age,na.rm = T)))
     sum(is.na(full$Age1))
 
 ### 方法2: Multivariate Imputation
@@ -287,7 +300,8 @@ url_video: ""
 
 <!-- -->
 
-    col <- c('Survived','Pclass','Sex','Age2','Fare','SibSp','Parch','Title','FsizeG','Embarked')
+    col <- c('Survived','Pclass','Sex','Age2','Fare',
+             'SibSp','Parch','Title','FsizeG','Embarked')
     my_tr <- full[1:Lt,col]
 
 -   将`my_tr`分为两个子集，用来对模型进行评价
@@ -399,14 +413,16 @@ url_video: ""
 
     # Get importance
     importance    <- importance(rf_model)
-    varImportance <- data.frame(Variables =row.names(importance), Importance = round(importance[ ,'MeanDecreaseGini'],2))
+    varImportance <- data.frame(Variables =row.names(importance), 
+                                Importance = round(importance[ ,'MeanDecreaseGini'],2))
 
     # Create a rank variable based on importance
     rankImportance <- varImportance %>%
       mutate(Rank = paste0('#',dense_rank(desc(Importance))))
 
     # Use ggplot2 to visualize the relative importance of variables
-    ggplot(rankImportance, aes(x = reorder(Variables, Importance), y = Importance, fill = Importance)) +
+    ggplot(rankImportance, aes(x = reorder(Variables, Importance), 
+                               y = Importance, fill = Importance)) +
       geom_bar(stat='identity') + 
       geom_text(aes(x = Variables, y = 0.5, label = Rank),
                 hjust=0, vjust=0.55, size = 4, colour = 'red') +
@@ -432,5 +448,5 @@ url_video: ""
     pred.test <- ifelse(pred.test > 0.5,1,0)
     res<- data.frame(test$PassengerId,pred.test)
     names(res)<-c("PassengerId","Survived")
-    res
+    head(res)
     #write.csv(res,file="glm_res.csv",row.names = F)
