@@ -6,7 +6,6 @@ theme: "starter-hugo-academic"
 
 title: Chris622 # Website name
 baseURL: 'https://lmj98.netlify.app/' # Website URL
-
 ############################
 ## LANGUAGE
 ############################

@@ -77,7 +77,7 @@ sections:
     
 - block: collection
   content:
-    count: 5
+    count: 3
     filters:
       author: ""
       category: ""
