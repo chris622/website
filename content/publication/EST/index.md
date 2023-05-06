@@ -6,7 +6,7 @@ authors:
 - admin
 date: "2023-03-06"
 doi: "10.1021/acs.est.2c08889"
-featured: true
+featured: false
 image:
   caption: 'Image credit: [**Environmental Science & Technology**](https://pubs.acs.org/journal/esthag)'
   focal_point: ""

@@ -24,7 +24,6 @@ tags:
 - website
 - blogdown
 - Netlify
-- Git
 - R
 title: Website | 使用wowchemy模块制作个人网站
 ---

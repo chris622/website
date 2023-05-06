@@ -44,36 +44,13 @@ sections:
     subtitle: 教育经历
   design:
     columns: "1"
-
-- block: collection
+    
+- block: tag_cloud
   content:
-    filters:
-      featured_only: true
-      folders:
-      - publication
-    title: Featured Publications
-    subtitle: 代表论文
-  design:
-    columns: "2"
-    view: card
-  id: featured
-
-- block: collection
-  content:
-    count: 3
-    filters:
-      exclude_featured: true
-      folders:
-      - publication
-    text: |-
-      {{% callout note %}}
-      Quickly discover relevant content by [filtering publications](./publication/).
-      {{% /callout %}}
-    title: Recent Publications
-    subtitle: 近期发表论文
+    title: Popular Topics
+    subtitle: 热点话题
   design:
     columns: "1"
-    view: list
     
 - block: collection
   content:
@@ -122,12 +99,38 @@ sections:
     view: showcase
   id: projects
 
-- block: tag_cloud
+
+- block: collection
   content:
-    title: Popular Topics
-    subtitle: 热点话题
+    filters:
+      featured_only: true
+      folders:
+      - publication
+    title: Featured Publications
+    subtitle: 代表论文
   design:
     columns: "2"
+    view: card
+  id: featured
+
+- block: collection
+  content:
+    count: 3
+    filters:
+      exclude_featured: true
+      folders:
+      - publication
+    text: |-
+      {{% callout note %}}
+      Quickly discover relevant content by [filtering publications](./publication/).
+      {{% /callout %}}
+    title: Recent Publications
+    subtitle: 近期发表论文
+  design:
+    columns: "2"
+    view: list
+    
+
 
 - block: contact
   content:
